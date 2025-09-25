@@ -1,0 +1,86 @@
+# Ambiente virtuale
+venv/
+.env/
+ENV/
+.venv/
+bin/
+include/
+lib/
+lib64
+pyvenv.cfg
+
+# Cache di Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribuzione / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# File di configurazione e segreti
+.env
+.env.local
+.env.*.local
+config.ini
+secrets.txt
+
+# Database
+*.db
+*.sqlite3
+
+# File di log
+*.log
+logs/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# File di dati grandi (comuni nei progetti Big Data)
+*.csv
+*.tsv
+*.json
+*.parquet
+*.avro
+data/
+datasets/
+*.h5
+*.hdf5
+
+# File temporanei
+*.tmp
+*.swp
+*~
+
+# File di sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Spark
+metastore_db/
+derby.log
