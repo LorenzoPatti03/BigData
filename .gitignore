@@ -5,6 +5,7 @@ ENV/
 .venv/
 bin/
 include/
+share/
 lib/
 lib64
 pyvenv.cfg
