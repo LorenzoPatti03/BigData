@@ -1,0 +1,3 @@
+notte	3868
+pomeriggio	2058
+sera	4074
