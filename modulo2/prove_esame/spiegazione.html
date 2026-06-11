@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Analisi per i Big Data - Dispensa Completa d'Esame</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 40px;
+            background-color: #fff;
+        }
+        h1 {
+            color: #003366;
+            text-align: center;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-size: 26px;
+        }
+        h2 {
+            color: #004080;
+            border-bottom: 2px solid #e6f2ff;
+            padding-bottom: 8px;
+            margin-top: 40px;
+            font-size: 20px;
+        }
+        h3 {
+            color: #0056b3;
+            margin-top: 25px;
+            font-size: 16px;
+        }
+        p, li {
+            text-align: justify;
+            font-size: 14px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        pre {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f8f9fa;
+            border-left: 4px solid #0056b3;
+            padding: 15px;
+            overflow-x: auto;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #003366;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .note-box {
+            background-color: #e6f2ff;
+            border-left: 4px solid #004080;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Corso di Big Data — Modulo Analisi per i Big Data<br><small>Dispensa Strutturata e Quadri Teorici per le Prove d'Esame</small></h1>
+
+    <div class="note-box">
+        <strong>Nota Metodologica d'Esame:</strong> Questa dispensa è strutturata per rispondere ai criteri di valutazione non binari del docente. Per ogni blocco d'analisi vengono esplicitati il rigore metodologico, la cornice teorica fondamentale, le varianti d'esame desunte dai compiti passati (Housing, Titanic, Aggregation, Data.csv) e le relative giustificazioni ingegneristiche necessarie per la stesura del report scritto.
+    </div>
+
+    <hr>
+
+    <h2>1. Pre-Processing e Trattamento dei Dati</h2>
+    
+    <h3>1.1 Imputazione dei Dati Mancanti (Data Imputation)</h3>
+    <p><strong>Cornice Teorica:</strong> La presenza di valori mancanti (<code>NaN</code>) impedisce l'esecuzione delle operazioni algebriche interne ai modelli di Machine Learning di Scikit-Learn. Esistono tre approcci fondamentali, la cui scelta deve essere giustificata nel report:</p>
+    <ul>
+        <li><strong>Imputazione con Mediana:</strong> Si applica alle feature numeriche continue. È preferibile alla media poiché è una statistica robusta, ovvero non risente della presenza di outlier asimmetrici nella distribuzione dei dati (es. la feature <code>total_bedrooms</code> nel compito Housing).</li>
+        <li><strong>Imputazione Strategica Condizionata (Stratificata):</strong> Richiesta esplicitamente nel compito Titanic. I dati mancanti (es. l'età <code>Age</code>) non vengono imputati con un valore globale, ma calcolando la mediana all'interno di micro-gruppi definiti da variabili categoriche determinanti (es. mediana dell'età calcolata per classe di imbarco <code>Pclass</code> e genere <code>Sex</code>), riflettendo la reale stratificazione sociale del dataset.</li>
+        <li><strong>Rimozione (Drop):</strong> Si applica esclusivamente quando la feature presenta una percentuale di dati mancanti talmente elevata (es. > 60-70%, come la feature <code>Cabin</code> nel Titanic) da rendere qualsiasi stima statistica un'introduzione arbitraria di rumore.</li>
+    </ul>
+
+    <h3>1.2 Codifica delle Feature Categoriche</h3>
+    <p><strong>Cornice Teorica:</strong> I modelli matematici elaborano esclusivamente matrici numeriche. Le stringhe di testo categoriche devono essere mappate nello spazio numerico:</p>
+    <ul>
+        <li><strong>Ordinal Encoding:</strong> Associa un intero progressivo a ogni categoria (es. <code>[0, 1, 2]</code>). È metodologicamente corretto solo per variabili che possiedono un ordine intrinseco naturale (es. la classe sociale <code>Pclass</code> o scale di gradimento). Se applicato a variabili nominali prive di ordine (es. <code>ocean_proximity</code> o <code>Embarked</code>), introduce un falso vincolo geometrico di vicinanza numerica. Tuttavia, nei modelli basati su alberi (come le Random Forest), l'Ordinal Encoding è accettabile poiché gli split ortogonali possono isolare i singoli interi senza subire distorsioni di magnitudo.</li>
+        <li><strong>One-Hot Encoding:</strong> Crea una colonna binaria (0 o 1) per ogni categoria di una feature nominale. Elimina qualsiasi ordinamento fittizio, ma aumenta la dimensionalità dello spazio (problema della "maledizione della dimensionalità").</li>
+    </ul>
+
+    <h3>1.3 Split Train-Test Stratificato e Data Leakage</h3>
+    <p><strong>Cornice Teorica:</strong> Per valutare la capacità di generalizzazione del modello, il dataset viene diviso in Training Set e Test Set. Nei problemi di classificazione, lo split deve obbligatoriamente essere **stratificato** (<code>stratify=y</code>). La stratificazione garantisce che le proporzioni delle classi del target (specialmente in scenari sbilanciati come la feature <code>death</code> o <code>Survived</code>) siano identiche sia nel set di addestramento che nel set di test, evitando che il modello venga addestrato o validato su sotto-campioni non rappresentativi.</p>
+    <p><strong>Regola d'Oro contro il Data Leakage:</strong> Qualsiasi operazione di scaling (<code>StandardScaler</code>) o di calcolo dei parametri di imputazione deve calcolare i propri coefficienti (media, deviazione standard, mediana) **esclusivamente sul Training Set** (tramite il metodo <code>.fit_transform()</code>) e applicarli sul Test Set per pura proiezione geometrica (tramite il metodo <code>.transform()</code>). Calcolare le metriche sull'intero dataset prima dello split comporterebbe una fuga di informazioni dal futuro (Test Set) all'addestramento, invalidando la robustezza scientifica della prova.</p>
+
+    <div class="page-break"></div>
+
+    <h2>2. Selezione delle Feature (Feature Selection)</h2>
+    <p>La selezione delle feature riduce la dimensionalità dello spazio dei dati, elimina le variabili ridondanti o collineari, riduce i tempi di computazione e mitiga il rischio di overfitting.</p>
+
+    <h3>2.1 Trattamento della Multicollinearità</h3>
+    <p><strong>Cornice Teorica:</strong> Due o più feature si dicono multicollineari se presentano un coefficiente di correlazione di Pearson vicino a $\pm 1$. In presenza di forte multicollinearità, la matrice dei dati perde il rango pieno e i modelli lineari (Regressione, SVM) diventano matematicamente instabili, poiché i coefficienti associati alle variabili assumono varianze infinite.</p>
+    <p><strong>Variante d'Esame (Trattamento tramite Combinazione Lineare):</strong> Richiesto esplicitamente nel compito di classificazione binaria (<code>pipeline1</code>). Se due variabili presentano una correlazione superiore a una soglia critica (es. $|r| > 0.85$), non si procede al drop lineare, ma alla loro fusione informativa tramite una combinazione lineare (es. calcolando la media aritmetica standardizzata delle due colonne), salvaguardando l'apporto informativo di entrambe in un'unica nuova componente geometrica.</p>
+
+    <h3>2.2 Metodi Filter: Fisher Score (ANOVA F-Test)</h3>
+    <p><strong>Cornice Teorica:</strong> I metodi Filter valutano la rilevanza delle feature basandosi esclusivamente sulle proprietà statistiche intrinseche dei dati, senza coinvolgere algoritmi di classificazione. Il **Fisher Score** (implementato in Scikit-Learn tramite <code>f_classif</code> per problemi di classificazione) valuta la capacità discriminante di una feature calcolando il rapporto tra la varianza inter-classe e la varianza intra-classe:</p>
+    <pre>F = (Varianza tra le medie delle diverse classi) / (Varianza interna a ciascuna classe)</pre>
+    <p>Un Fisher Score elevato indica che la feature presenta medie significativamente distanti tra classi diverse e distribuzioni molto compatte all'interno della stessa classe, risultando ottimale per la separazione geometrica.</p>
+    <p><strong>Criterio di Scelta del Numero di Feature (k):</strong> All'esame si applica l'**Elbow Method** (Metodo del Gomito). Si traccia un grafico a barre dei punteggi F ordinati in modo decrescente e si seleziona il punto di flesso della curva (il "gomito"), ovvero il punto oltre il quale l'incremento informativo delle feature successive diventa trascurabile.</p>
+
+    <h3>2.3 Metodi Embedded: Regolarizzazione LASSO come Selezionatore</h3>
+    <p><strong>Cornice Teorica:</strong> I metodi Embedded eseguono la feature selection come parte integrante del processo di ottimizzazione della funzione di costo del modello. La regressione **LASSO (Least Absolute Shrinkage and Selection Operator)** introduce nella loss function una penalizzazione L1 sul valore assoluto dei coefficienti $\beta$:</p>
+    <pre>Loss = SSE + &lambda; * &sum; |&beta;_j|</pre>
+    <p>La natura geometrica della sfericità dei vincoli L1 (punti angolosi sugli assi) forza matematicamente i coefficienti delle feature meno rilevanti o ridondanti ad assumere un valore **esattamente pari a zero**. Estraendo le feature con coefficienti non nulli (tramite la classe <code>SelectFromModel</code>), si ottiene una selezione automatica basata sulla reale capacità predittiva del regressore.</p>
+
+    <div class="page-break"></div>
+
+    <h2>3. Algoritmi di Clustering (Apprendimento Non Supervisionato)</h2>
+    <p>Il clustering non prevede l'utilizzo di una variabile target per guidare l'apprendimento. L'obiettivo è mappare le naturali transizioni di densità o vicinanza geometrica dello spazio.</p>
+
+    <h3>3.1 Pulizia Preliminare: Local Outlier Factor (LOF)</h3>
+    <p><strong>Cornice Teorica:</strong> Molti algoritmi di clustering (es. EM, K-Means) soffrono fortemente la presenza di outlier, i quali deviano la computazione delle medie o alterano i calcoli di covarianza. Il LOF misura l'anomalia locale di un punto confrontando la sua densità locale rispetto a quella dei suoi $K$ vicini (<code>n_neighbors</code>). Un punto isolato presenta una densità decisamente inferiore rispetto al suo intorno, registrando un punteggio LOF elevato.</p>
+    <p><strong>Giustificazione di $K$ e della Non-Separazione:</strong> Il parametro $K$ definisce la dimensione del contesto spaziale. Valori troppo bassi generano instabilità (scambiando la periferia di un cluster sano per anomalia); valori troppo alti appiattiscono la rilevazione. La ricerca di $K$ si effettua per stabilità (es. testando 10, 20, 50). <br><strong>ATTENZIONE:</strong> Nel clustering **non si esegue mai il train-test split**. Dividere il dataset altererebbe la densità locale dei punti, rendendo impossibile la mappatura della reale struttura geometrica del fenomeno.</p>
+
+    <h3>3.2 DBSCAN</h3>
+    <p><strong>Cornice Teorica:</strong> È un algoritmo basato sulla densità spaziale. Definisce ogni punto dello spazio in base a quanti elementi risiedono all'interno di un raggio geometrico $Eps$. Se un punto contiene almeno $MinPoints$ elementi nel suo intorno, viene marcato come **Core Point** (centro ad alta densità). I punti che rientrano nel raggio di un Core Point ma non soddisfano il requisito minimo diventano **Border Points**. Tutti gli altri punti sono etichettati come **Noise** (rumore, codice <code>-1</code>). Consente di identificare cluster di forme geometriche arbitrarie (superando il vincolo sferico del K-Means) e non richiede il numero di cluster a priori.</p>
+    <p><strong>Selezione dei Parametri tramite Griglia Manuale:</strong> Non essendoci un target, non è possibile impiegare il modulo <code>GridSearchCV</code> standard. Si implementa una Grid Search manuale tramite cicli annidati, misurando la bontà del risultato tramite il **Silhouette Score**. Un modello DBSCAN è ottimale se massimizza la Silhouette, riduce la percentuale di punti classificati come rumore e identifica un numero di cluster coerente con l'analisi visiva dello spazio.</p>
+
+    <h3>3.3 Clustering Probabilistico: Algoritmo EM (Gaussian Mixture Models)</h3>
+    <p><strong>Cornice Teorica:</strong> A differenza del DBSCAN (che effettua un *Hard Clustering*), il modello GMM implementa un approccio di *Soft Clustering* (o probabilistico). Si assume che i dati siano stati generati da una sovrapposizione di $K$ distribuzioni gaussiane multivariate. L'algoritmo **Expectation-Maximization (EM)** ottimizza i parametri iterando due fasi:</p>
+    <ul>
+        <li><strong>Fase E (Expectation):</strong> Calcola la probabilità a posteriori (appartenenza frazionaria) che ciascun punto appartenga a ognuna delle $K$ gaussiane, basandosi sui parametri correnti.</li>
+        <li><strong>Fase M (Maximization):</strong> Aggiorna i parametri geometrici delle gaussiane (vettori delle medie, matrici di covarianza e pesi dei prior $\alpha$) massimizzando la verosimiglianza dei dati pesata sulle probabilità calcolate nella fase E.</li>
+    </ul>
+    <p>L'impostazione <code>covariance_type='full'</code> permette a ogni componente gaussiana bivariata di assumere qualsiasi orientamento, inclinazione e volume nello spazio, adattandosi perfettamente a cluster allungati o affetti da sovrapposizioni parziali (*single linkage*).</p>
+
+    <h3>3.4 Validazione Esterna: Matrice di Confusione e Indice di Gini</h3>
+    <p><strong>Cornice Teorica:</strong> Quando si dispone delle classi reali d'origine (anche se non usate durante il clustering), è possibile verificare la corrispondenza tramite la Matrice di Confusione (Righe = Classi Reali, Colonne = Cluster Predetti). Per valutare quantitativamente la qualità del partizionamento si calcola l'**Indice di Impurità di Gini globale pesato**. Per ogni singolo cluster $j$ (colonna), l'indice misura il livello di eterogeneità interna:</p>
+    <pre>Gini_j = 1 - &sum; (m_ij / M_j)&sup2;</pre>
+    <p>Dove $m_{ij}$ è il numero di punti della classe reale $i$ finiti nel cluster $j$, e $M_j$ è la dimensione totale del cluster $j$. L'indice globale finale è la media dei singoli indici pesata sulla frazione di punti totali occupata da ciascun cluster. Un valore globale di Gini tendente a **0** certifica un clustering puro, in cui ogni gruppo racchiude una sola ed esclusiva classe reale.</p>
+
+    <div class="page-break"></div>
+
+    <h2>4. Classificazione (Apprendimento Supervisionato)</h2>
+    
+    <h3>4.1 Support Vector Machines (SVM) Non Lineari</h3>
+    <p><strong>Cornice Teorica:</strong> Il modello SVM proietta i dati originari in uno spazio a dimensionalità superiore (teoricamente infinita nel caso del kernel RBF) dove le classi diventano linearmente separabili. Questa proiezione avviene in modo computazionalmente efficiente grazie al **Kernel Trick**, che calcola le relazioni geometriche (prodotti scalari) direttamente nello spazio di partenza senza effettuare esplicitamente la mappatura coordinate per coordinate.</p>
+    <p>L'iperpiano separatore viene calcolato massimizzando il margine geometrico. L'equilibrio del modello è regolato dall'iperparametro **C** (parametro di regolarizzazione): un valore di C elevato impone una penalizzazione severa per ogni singolo errore di classificazione del Training Set, portando a confini decisionali rigidi (rischio di overfitting); un valore di C contenuto permette un certo grado di errore tollerato, favorendo un margine più ampio e una migliore generalizzazione (robusto contro il rumore).</p>
+
+    <h3>4.2 Random Forest Classifier</h3>
+    <p><strong>Cornice Teorica:</strong> È un algoritmo di Ensemble basato sul principio del **Bagging** (Bootstrap Aggregating). Il modello addestra un'ampia foresta di alberi decisionali indipendenti profondi. Ciascun albero viene addestrato su un sottoinsieme casuale di righe estratte con rimpiazzo dal dataset originale (campione di Bootstrap). Inoltre, ad ogni split di ogni nodo, l'algoritmo non valuta tutte le feature disponibili, ma solo un sottoinsieme estratto casualmente (<code>max_features='sqrt'</code>).</p>
+    <p>I singoli alberi decisionali presentano intrinsecamente un basso bias (alta capacità di apprendimento) ma un'elevatissima varianza (tendenza all'overfitting). La combinazione tramite votazione a maggioranza della Random Forest riduce matematicamente la varianza globale del sistema senza intaccare il basso bias originario, offrendo un classificatore estremamente stabile e robusto.</p>
+
+    <h3>4.3 Rare Class Learning (Gestione delle Classi Rare)</h3>
+    <p><strong>Cornice Teorica:</strong> In presenza di dataset fortemente sbilanciati (es. la variabile <code>death</code> in ambito clinico), l'ottimizzazione standard basata sull'Accuracy globale fallisce, poiché il modello tende a predire sistematicamente la classe maggioritaria ignorando completamente la classe rara (che rappresenta il reale fenomeno di interesse). Si implementano due varianti risolutive:</p>
+    <ul>
+        <li><strong>Bilanciamento dei Pesi (<code>class_weight='balanced'</code>):</strong> Modifica la funzione di costo del modello assegnando una penalità inversamente proporzionale alla frequenza della classe. Un errore commesso sulla classe rara viene pesato molto più di un errore sulla classe maggioritaria, forzando l'algoritmo a prestare attenzione ai pattern rari.</li>
+        <li><strong>SMOTE (Synthetic Minority Over-sampling Technique):</strong> Tecnica di sovracampionamento algoritmico che opera nello spazio delle feature. Invece di duplicare banalmente i record esistenti (causando overfitting), lo SMOTE seleziona i punti della classe minoritaria, ne calcola i $K$ vicini della stessa classe e genera sinteticamente nuovi punti intermedi lungo i segmenti geometrici che uniscono i vicini, densificando la regione minoritaria in modo coerente.</li>
+    </ul>
+
+    <h3>4.4 Metriche di Valutazione e Curve ROC/AUC</h3>
+    <p>In presenza di sbilanciamento delle classi, l'Accuracy è una metrica ingannevole. Si ricorre alle analisi basate sulla frazione di veri positivi (TPR) e falsi positivi (FPR):</p>
+    <ul>
+        <li><strong>Curva ROC (Receiver Operating Characteristic):</strong> Grafico che mappa la sensitività (TPR) in funzione di $1 - \text{specificità}$ (FPR) al variare continuo della soglia probabilistica di decisione (da 0 a 1) del classificatore. Mostra la capacità discriminativa intrinseca del modello indipendentemente dalla soglia rigida scelta.</li>
+        <li><strong>AUC (Area Under the Curve):</strong> È l'integrale della curva ROC. Esprime la probabilità che il classificatore assegni un punteggio probabilistico più alto a un elemento estratto casualmente dalla classe positiva rispetto a uno estratto dalla classe negativa. Un valore pari a **0.5** indica un modello equivalente al lancio di una moneta (casuale); un valore pari a **1.0** rappresenta la perfezione matematica.</li>
+        <li><strong>Estensione Multiclasse (One-Vs-Rest - OvR):</strong> Per problemi con più di due classi (es. la feature <code>dzgroup</code>), la valutazione ROC/AUC viene estesa addestrando $K$ classificatori binari indipendenti (ogni classe contro tutte le altre). La metrica complessiva viene valutata tracciando una curva ROC per ciascuna classe e calcolando la media macro o pesata dell'AUC (<code>roc_auc_score(..., multi_class='ovr')</code>).</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2>5. Regressione (Apprendimento Supervisionato)</h2>
+    <p>L'obiettivo della regressione è mappare la relazione che intercorre tra le feature indipendenti e una variabile target di natura numerica continua (es. la feature <code>aps</code> o <code>median_house_value</code>).</p>
+
+    <h3>5.1 Regressione Lineare Regolarizzata: Ridge vs LASSO</h3>
+    <p><strong>Cornice Teorica:</strong> La regressione lineare standard basata sui minimi quadrati (OLS) mira a minimizzare la somma dei quadrati dei residui (SSE). In presenza di multicollinearità, OLS genera coefficienti instabili. Le varianti regolarizzate controllano la complessità inserendo un termine di penalità controllato dall'iperparametro di tuning $\alpha$:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Caratteristica</th>
+                <th>Regressione RIDGE (Penalizzazione L2)</th>
+                <th>Regressione LASSO (Penalizzazione L1)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Termine di Penalità</strong></td>
+                <td>$\alpha * \sum (\beta_j)^2$ (Quadrato dei coefficienti)</td>
+                <td>$\alpha * \sum |\beta_j|$ (Valore assoluto dei coefficienti)</td>
+            </tr>
+                <td><strong>Impatto sui Coefficienti</strong></td>
+                <td>Schiaccia i coefficienti asintoticamente verso lo zero, mantenendoli tutti attivi.</td>
+                <td>Forza i coefficienti delle variabili irrilevanti a diventare esattamente pari a **zero**.</td>
+            </tr>
+            <tr>
+                <td><strong>Funzione Primaria</strong></td>
+                <td>Contrasta la multicollinearità e riduce la varianza del modello.</td>
+                <td>Effettua **Feature Selection** implicita integrata nel modello (*Sparsity*).</td>
+            </tr>
+            <tr>
+                <td><strong>Comportamento Geometrico</strong></td>
+                <td>I contorni del vincolo sono sferici; non intersecano quasi mai gli assi nei vertici.</td>
+                <td>I contorni del vincolo sono romboidali/angolosi; toccano frequentemente gli assi.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>5.2 Random Forest Regressor</h3>
+    <p><strong>Cornice Teorica:</strong> Funziona secondo la medesima architettura d'insieme del classificatore (Bagging e Random Feature Split). La differenza risiede nel meccanismo di predizione e di split: i nodi degli alberi non vengono scissi minimizzando l'impurità di Gini, bensì minimizzando criteri di errore continuo, tipicamente il **MSE (Mean Squared Error)** o il **MAE (Mean Absolute Error)**. La predizione finale della foresta per un dato non visto non avviene per maggioranza, ma calcolando la **media aritmetica** delle risposte continue fornite da tutti i singoli alberi profondi della foresta.</p>
+
+    <h3>5.3 Metriche di Valutazione della Regressione</h3>
+    <ul>
+        <li><strong>RMSE (Root Mean Squared Error):</strong> È la radice quadrata della media degli errori al quadrato. Esprime l'errore medio del modello espresso nella stessa unità di misura della variabile target originale, facilitando l'interpretazione. Elevando gli errori al quadrato prima della media, l'RMSE penalizza in modo severo i grandi errori di predizione (gli "errori gravi"), risultando un ottimo indicatore di affidabilità.</li>
+        <li><strong>Coefficiente di Determinazione ($R^2$ Score):</strong> Rappresenta la proporzione di varianza del target che viene spiegata e catturata dalle variabili predittive inserite nel modello:
+            <pre>R&sup2; = 1 - (SS_res / SS_tot)</pre>
+            Un valore pari a **1.0** indica che il modello predice perfettamente ogni punto senza alcun errore. Un valore pari a **0** indica che il modello ha una capacità predittiva identica a una costante piatta che predice stabilmente la media storica del target. Valori negativi indicano modelli strutturalmente errati, le cui predizioni sono peggiori della media stessa.
+        </li>
+    </ul>
+
+</body>
+</html>
