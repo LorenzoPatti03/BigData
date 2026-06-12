@@ -58,7 +58,6 @@ logs/
 .ipynb_checkpoints
 
 # File di dati grandi (comuni nei progetti Big Data)
-*.csv
 *.tsv
 *.json
 *.parquet

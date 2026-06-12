@@ -1,0 +1,687 @@
+item_id,category,price
+1,Health & Personal Care,18.09
+2,Books,15.68
+3,Books,13.57
+4,Books,23.10
+5,Books,24.39
+6,Electronics,59.99
+7,Tools & Hardware,9.75
+8,Electronics,3.33
+9,Books,13.57
+10,Books,11.97
+11,Toys & Games,21.25
+12,Kitchen & Housewares,2.29
+13,Other,9.95
+14,MP3 Downloads,1.99
+15,MP3 Downloads,5.00
+16,Books,7.99
+17,Books,15.60
+18,Books,4.95
+19,Books,10.85
+20,Books,25.80
+21,Music,13.99
+22,Video On Demand Videos,0.99
+23,Books,10.94
+24,Music,10.99
+25,Kindle eBooks,9.99
+26,Books,0.95
+27,Books,9.99
+28,Health & Personal Care,32.95
+29,Books,31.49
+30,Books,19.79
+31,Books,14.29
+32,Books,26.37
+33,Books,26.39
+34,Books,26.39
+35,Books,16.49
+36,Books,23.09
+37,Books,16.49
+38,Books,14.95
+39,Health & Personal Care,25.75
+40,Tools & Hardware,9.49
+41,Books,37.79
+42,Software,299.99
+43,Software,242.99
+44,Apparel & Accessories,14.99
+45,Health & Personal Care,9.98
+46,Video Games,0.01
+47,Books,3.95
+48,Books,8.50
+49,Books,40.94
+50,Books,11.99
+51,Music,18.97
+52,Electronics,109.99
+53,MP3 Downloads,0.89
+54,Kindle Hardware,29.99
+55,Kindle Hardware,29.99
+56,DVD,22.49
+57,Kindle eBooks,1.59
+58,Books,7.99
+59,DVD,19.98
+60,DVD,19.95
+61,Books,11.53
+62,Electronics,30.25
+63,Electronics,51.40
+64,Apparel & Accessories,0.77
+65,Books,16.67
+66,Books,10.20
+67,Books,16.49
+68,MP3 Downloads,0.99
+69,MP3 Downloads,0.99
+70,Toys & Games,1.39
+71,Toys & Games,0.99
+72,Toys & Games,4.95
+73,Toys & Games,11.99
+74,Books,31.49
+75,MP3 Downloads,8.99
+76,MP3 Downloads,5.00
+77,Books,15.74
+78,Books,16.73
+79,Books,26.37
+80,Books,4.49
+81,Electronics,4.95
+82,Books,12.21
+83,Books,4.24
+84,Cell Phones & Service,2.58
+85,Video Games,4.79
+86,Sports & Outdoors,19.99
+87,Video Games,7.99
+88,Books,14.65
+89,Magazine Subscriptions,15.00
+90,Books,12.99
+91,Music,21.99
+92,DVD,109.99
+93,DVD,31.99
+94,Health & Personal Care Appliances,18.99
+95,Books,21.86
+96,DVD,1.99
+97,Books,0.15
+98,Health & Personal Care,11.09
+99,Books,12.89
+100,Music,9.95
+101,MP3 Downloads,3.99
+102,MP3 Downloads,8.99
+103,Books,53.96
+104,Books,35.89
+105,Electronics,16.95
+106,Sports & Outdoors,6.76
+107,Sports & Outdoors,7.27
+108,Books,9.60
+109,Electronics,26.29
+110,MP3 Downloads,0.99
+111,MP3 Downloads,0.99
+112,Electronics,9.97
+113,MP3 Downloads,9.90
+114,Apparel & Accessories,30.88
+115,Sports & Outdoors,14.95
+116,Sports & Outdoors,14.95
+117,Sports & Outdoors,14.95
+118,MP3 Downloads,0.99
+119,DVD,9.99
+120,MP3 Downloads,0.99
+121,Kindle eBooks,6.39
+122,Books,19.77
+123,Books,9.63
+124,Books,26.95
+125,Books,106.31
+126,Video Games,5.58
+127,MP3 Downloads,0.99
+128,Tools & Hardware,11.85
+129,Electronics,39.99
+130,Health & Personal Care,9.95
+131,Books,37.79
+132,Kitchen & Housewares,109.99
+133,Kitchen & Housewares,54.95
+134,Kitchen & Housewares,48.99
+135,Video Games,4.95
+136,Books,3.86
+137,Electronics,27.99
+138,Sports & Outdoors,22.46
+139,Sports & Outdoors,17.99
+140,DVD,24.35
+141,Books,0.01
+142,Books,0.01
+143,Books,14.27
+144,VHS,0.01
+145,Books,16.50
+146,Books,19.77
+147,Books,10.17
+148,Electronics,35.24
+149,Books,10.19
+150,Books,8.92
+151,MP3 Downloads,2.99
+152,Electronics,34.99
+153,Electronics,2.88
+154,DVD,12.99
+155,MP3 Downloads,0.99
+156,DVD,10.49
+157,Electronics,32.99
+158,Books,19.77
+159,Books,19.77
+160,Music,15.39
+161,Magazine Subscriptions,19.95
+162,Electronics,9.95
+163,Books,34.65
+164,DVD,22.49
+165,DVD,22.49
+166,Books,15.89
+167,Books,34.56
+168,Electronics,72.49
+169,Electronics,95.89
+170,MP3 Downloads,8.90
+171,Books,26.39
+172,Kindle eBooks,7.96
+173,MP3 Downloads,0.99
+174,Books,31.64
+175,Books,0.18
+176,Books,36.26
+177,Books,3.40
+178,Books,2.78
+179,Books,35.25
+180,Books,26.39
+181,Books,26.39
+182,Books,14.95
+183,Books,14.99
+184,Books,29.69
+185,Books,31.49
+186,Books,7.97
+187,Books,24.39
+188,Books,26.39
+189,Books,18.89
+190,Books,26.39
+191,Books,29.69
+192,Books,14.29
+193,Books,16.65
+194,Books,29.69
+195,Books,22.45
+196,Books,23.09
+197,Books,31.49
+198,Books,16.49
+199,Books,26.39
+200,Books,2.55
+201,Books,23.09
+202,Books,24.99
+203,Books,26.39
+204,Books,29.69
+205,Books,5.72
+206,Books,23.07
+207,Books,4.00
+208,Books,46.10
+209,Books,16.49
+210,Books,16.47
+211,Books,19.79
+212,Books,23.09
+213,Books,15.74
+214,Kindle eBooks,23.75
+215,Video Games,27.00
+216,Kitchen & Housewares,34.55
+217,MP3 Downloads,0.99
+218,Music,19.98
+219,Books,59.85
+220,Books,75.60
+221,DVD,15.49
+222,Music,7.97
+223,MP3 Downloads,0.99
+224,Health & Personal Care Appliances,99.95
+225,MP3 Downloads,0.99
+226,Books,26.39
+227,MP3 Downloads,0.99
+228,Books,139.52
+229,Video Games,9.98
+230,Electronics,147.38
+231,Electronics,29.44
+232,MP3 Downloads,0.89
+233,Books,14.00
+234,Books,2.87
+235,Electronics,36.99
+236,Tools & Hardware,12.85
+237,Books,0.01
+238,Video Games,35.99
+239,MP3 Downloads,5.00
+240,Books,10.36
+241,MP3 Downloads,5.99
+242,Health & Personal Care,24.24
+243,Kindle eBooks,9.99
+244,Books,3.21
+245,Books,31.49
+246,Apparel & Accessories,15.99
+247,MP3 Downloads,0.89
+248,Baby,19.99
+249,Toys & Games,11.75
+250,Books,19.95
+251,Books,70.02
+252,Apparel & Accessories,130.00
+253,MP3 Downloads,0.99
+254,Books,9.83
+255,MP3 Downloads,0.99
+256,MP3 Downloads,0.89
+257,Kitchen & Housewares,829.00
+258,Music,10.99
+259,Books,44.10
+260,MP3 Downloads,0.99
+261,Books,9.56
+262,Tools & Hardware,25.00
+263,Tools & Hardware,61.98
+264,Books,11.53
+265,Books,28.35
+266,Books,11.04
+267,Books,22.76
+268,Electronics,10.99
+269,Electronics,6.99
+270,Electronics,6.99
+271,Electronics,6.99
+272,Electronics,4.99
+273,Kindle eBooks,9.79
+274,MP3 Downloads,0.99
+275,MP3 Downloads,0.99
+276,MP3 Downloads,0.99
+277,Apparel & Accessories,3.99
+278,MP3 Downloads,4.99
+279,MP3 Downloads,0.99
+280,Books,9.32
+281,Electronics,29.97
+282,MP3 Downloads,0.99
+283,Books,10.17
+284,Music,16.98
+285,Kindle eBooks,9.99
+286,Books,23.09
+287,Music,0.69
+288,Electronics,24.40
+289,Books,32.97
+290,Books,50.40
+291,Watches,119.99
+292,Electronics,104.99
+293,Books,13.59
+294,Books,9.58
+295,Cell Phones & Service,18.63
+296,Electronics,9.99
+297,Books,26.39
+298,Books,26.39
+299,MP3 Downloads,0.99
+300,Kindle eBooks,9.99
+301,Electronics,22.99
+302,Toys & Games,14.61
+303,Toys & Games,32.50
+304,Toys & Games,17.99
+305,Kindle eBooks,3.99
+306,Kindle Hardware,359.00
+307,Kindle Hardware,359.00
+308,Electronics,11.49
+309,Electronics,19.98
+310,MP3 Downloads,8.99
+311,MP3 Downloads,0.99
+312,MP3 Downloads,0.99
+313,Health & Personal Care,32.86
+314,MP3 Downloads,0.99
+315,Books,14.95
+316,Books,11.67
+317,Kitchen & Housewares,15.95
+318,Video Games,26.88
+319,Books,7.50
+320,Apparel & Accessories,31.99
+321,Tools & Hardware,24.99
+322,Books,8.11
+323,Music,15.98
+324,Kitchen & Housewares,82.00
+325,Video Games,0.79
+326,Books,14.35
+327,Electronics,59.90
+328,Apparel & Accessories,429.99
+329,Books,31.49
+330,Sports & Outdoors,3.74
+331,Books,10.19
+332,Kindle eBooks,7.99
+333,Health & Personal Care,20.97
+334,Music,9.99
+335,Sports & Outdoors,1.25
+336,Books,19.77
+337,Books,29.69
+338,Books,5.98
+339,Books,19.47
+340,Books,30.39
+341,Books,31.49
+342,Books,26.39
+343,Books,3.60
+344,Books,4.95
+345,Books,3.60
+346,Books,3.60
+347,Books,4.95
+348,Books,3.60
+349,Electronics,10.88
+350,Books,21.22
+351,Books,14.00
+352,Books,6.00
+353,Books,18.64
+354,Books,26.39
+355,Books,4.50
+356,Books,4.50
+357,Books,26.39
+358,Books,3.60
+359,Books,3.60
+360,Books,4.95
+361,Books,3.60
+362,Books,4.95
+363,Books,3.60
+364,Books,26.40
+365,Books,40.94
+366,Books,14.54
+367,Books,3.60
+368,Books,4.95
+369,Books,3.60
+370,Books,26.39
+371,DVD,30.35
+372,DVD,4.01
+373,MP3 Downloads,7.99
+374,Books,15.52
+375,DVD,22.99
+376,Music,22.99
+377,Toys & Games,1.98
+378,Sports & Outdoors,13.50
+379,Kitchen & Housewares,8.99
+380,Kitchen & Housewares,14.98
+381,MP3 Downloads,0.99
+382,Kindle eBooks,0.80
+383,MP3 Downloads,0.99
+384,Books,107.09
+385,Video On Demand Videos,0.99
+386,Books,6.95
+387,Books,6.95
+388,MP3 Downloads,9.99
+389,Other,5.95
+390,Electronics,36.94
+391,Toys & Games,79.99
+392,Kindle eBooks,14.82
+393,Books,19.80
+394,Health & Personal Care,35.95
+395,Books,9.00
+396,Kindle eBooks,7.99
+397,Other,8.50
+398,Electronics,21.93
+399,Books,10.88
+400,Health & Personal Care Appliances,11.75
+401,DVD,27.99
+402,Books,14.99
+403,Other,14.99
+404,Books,18.89
+405,Books,91.34
+406,Books,29.69
+407,MP3 Downloads,0.99
+408,Books,16.47
+409,Books,10.87
+410,Books,11.99
+411,Health & Personal Care Appliances,33.30
+412,Health & Personal Care,29.99
+413,Books,15.00
+414,Health & Personal Care,39.45
+415,Electronics,8.65
+416,Music,15.98
+417,Books,11.73
+418,Books,11.75
+419,Books,2.33
+420,Kitchen & Housewares,19.99
+421,Tools & Hardware,10.95
+422,Apparel & Accessories,19.99
+423,MP3 Downloads,0.99
+424,Books,12.23
+425,Books,6.99
+426,Books,6.73
+427,Video Games,8.99
+428,Books,12.23
+429,Pet Supplies,34.49
+430,Health & Personal Care Appliances,25.99
+431,Books,16.50
+432,Books,23.09
+433,Books,23.09
+434,Books,23.09
+435,Music,1.83
+436,Electronics,59.99
+437,Electronics,12.99
+438,Books,4.00
+439,Books,26.39
+440,Books,14.95
+441,Books,26.39
+442,Books,10.17
+443,Books,67.23
+444,Books,42.09
+445,Books,40.94
+446,Books,37.79
+447,Books,37.79
+448,Books,34.64
+449,Books,13.99
+450,Health & Personal Care,48.56
+451,Books,40.95
+452,Books,13.59
+453,Books,0.75
+454,Software,14.95
+455,MP3 Downloads,9.49
+456,Books,1.69
+457,Books,7.47
+458,DVD,13.28
+459,Magazine Subscriptions,19.95
+460,Books,14.95
+461,Books,10.97
+462,Tools & Hardware,9.44
+463,Kitchen & Housewares,31.07
+464,Books,19.77
+465,Music,11.98
+466,Books,10.17
+467,Books,26.39
+468,Music,28.35
+469,Kindle eBooks,9.99
+470,MP3 Downloads,0.99
+471,MP3 Downloads,0.99
+472,Music,16.99
+473,MP3 Downloads,0.99
+474,Kitchen & Housewares,13.55
+475,Music,7.97
+476,MP3 Downloads,9.99
+477,Health & Personal Care,7.81
+478,Beauty,7.00
+479,Software,3.99
+480,Electronics,12.71
+481,DVD,6.99
+482,MP3 Downloads,0.99
+483,MP3 Downloads,0.99
+484,Electronics,17.54
+485,Electronics,22.85
+486,DVD,17.99
+487,Books,4.80
+488,Electronics,39.80
+489,Sports & Outdoors,15.00
+490,Health & Personal Care,45.99
+491,DVD,7.49
+492,Books,26.39
+493,Books,13.57
+494,Video Games,27.99
+495,Electronics,9.82
+496,Music,12.49
+497,Books,7.99
+498,DVD,12.99
+499,Books,10.87
+500,Toys & Games,19.68
+501,Health & Personal Care,5.68
+502,Pet Supplies,26.94
+503,Electronics,8.70
+504,Kindle eBooks,0.01
+505,Other,0.49
+506,MP3 Downloads,0.89
+507,Books,14.99
+508,Books,26.39
+509,Books,10.87
+510,Kitchen & Housewares,17.68
+511,Books,19.79
+512,Jewelry,35.00
+513,Jewelry,39.00
+514,MP3 Downloads,0.99
+515,Video Games,79.99
+516,MP3 Downloads,0.99
+517,Books,63.72
+518,Books,10.17
+519,Health & Personal Care,23.16
+520,Books,10.98
+521,Video Games,39.99
+522,DVD,8.33
+523,DVD,21.99
+524,MP3 Downloads,8.99
+525,Books,4.21
+526,Office Products,19.49
+527,MP3 Downloads,0.99
+528,Books,32.97
+529,Music,9.99
+530,Kitchen & Housewares,16.49
+531,Books,16.49
+532,Books,16.49
+533,Books,22.49
+534,MP3 Downloads,0.89
+535,MP3 Downloads,5.99
+536,Pet Supplies,6.99
+537,Electronics,13.18
+538,Books,12.47
+539,MP3 Downloads,2.99
+540,Books,29.69
+541,Books,25.00
+542,DVD,12.99
+543,DVD,16.99
+544,Music,179.99
+545,Books,7.00
+546,Music,16.99
+547,MP3 Downloads,0.99
+548,Books,11.53
+549,Books,2.50
+550,Music,10.99
+551,Video Games,6.96
+552,Music,9.97
+553,Books,16.47
+554,Books,10.20
+555,Kindle eBooks,2.39
+556,Books,6.25
+557,DVD,9.99
+558,Kindle eBooks,9.99
+559,Other,2.99
+560,Books,11.97
+561,Books,0.13
+562,Baby,19.99
+563,Baby,13.95
+564,Kindle eBooks,9.99
+565,Books,18.45
+566,Books,12.72
+567,Books,11.62
+568,MP3 Downloads,7.97
+569,Music,2.05
+570,Books,9.95
+571,Books,11.56
+572,Kindle eBooks,2.36
+573,Books,16.17
+574,DVD,4.22
+575,Books,3.05
+576,Books,12.21
+577,Kindle eBooks,0.99
+578,Books,11.16
+579,Kindle eBooks,1.00
+580,Books,4.29
+581,Books,3.89
+582,Books,10.20
+583,DVD,7.49
+584,Other,2.49
+585,DVD,9.98
+586,Books,9.88
+587,Books,10.17
+588,Music,4.30
+589,Books,18.00
+590,Books,23.09
+591,Books,0.69
+592,Books,88.00
+593,Books,13.22
+594,Books,10.19
+595,Books,54.97
+596,Music,16.99
+597,Books,2.68
+598,Books,23.10
+599,Books,10.88
+600,MP3 Downloads,12.98
+601,Books,11.86
+602,Music,14.99
+603,Books,6.98
+604,Kindle eBooks,9.99
+605,Music,19.41
+606,Books,28.80
+607,Books,33.75
+608,Books,12.24
+609,Electronics,36.99
+610,Toys & Games,11.99
+611,Kindle eBooks,9.99
+612,Toys & Games,12.94
+613,Kindle eBooks,4.47
+614,Music,13.99
+615,Kindle eBooks,0.99
+616,DVD,8.97
+617,Books,13.60
+618,MP3 Downloads,0.99
+619,DVD,10.49
+620,Health & Personal Care,32.98
+621,Electronics,26.99
+622,Electronics,15.99
+623,Books,3.97
+624,Electronics,39.99
+625,Electronics,15.99
+626,Toys & Games,21.66
+627,Health & Personal Care,21.85
+628,DVD,8.99
+629,Software,47.15
+630,Kindle eBooks,6.59
+631,Health & Personal Care,24.55
+632,Books,3.50
+633,MP3 Downloads,10.99
+634,DVD,19.99
+635,MP3 Downloads,0.99
+636,Electronics,4.17
+637,Video Games,9.45
+638,Sports & Outdoors,9.50
+639,Kindle eBooks,6.39
+640,Electronics,30.99
+641,Books,19.77
+642,Books,19.77
+643,Books,26.39
+644,Books,74.95
+645,Tools & Hardware,42.99
+646,Books,17.13
+647,Kitchen & Housewares,31.88
+648,Books,11.16
+649,Automotive,9.37
+650,MP3 Downloads,1.99
+651,Music,6.12
+652,Books,16.47
+653,Music,18.88
+654,Music,10.97
+655,Electronics,84.99
+656,MP3 Downloads,0.89
+657,Books,39.95
+658,Kindle eBooks,2.39
+659,Toys & Games,4.98
+660,DVD,9.49
+661,Books,10.47
+662,MP3 Downloads,0.99
+663,MP3 Downloads,0.99
+664,MP3 Downloads,0.99
+665,MP3 Downloads,1.29
+666,Music,10.99
+667,Electronics,50.99
+668,Kitchen & Housewares,49.99
+669,Books,23.07
+670,Books,9.32
+671,Books,11.00
+672,Apparel & Accessories,65.00
+673,Books,6.06
+674,Books,15.49
+675,Books,5.30
+676,Toys & Games,39.95
+677,Music,9.69
+678,Books,6.96
+679,Books,26.39
+680,Video Games,12.99
+681,Books,9.95
+682,Video On Demand Videos,3.99
+683,MP3 Downloads,9.49
+684,MP3 Downloads,0.99
+685,Sports & Outdoors,180.00
+686,Musical Instruments,84.75
