@@ -32,28 +32,44 @@ config = {
 def make_dataloaders(train_data, val_data, test_data, 
                      batch=config["batch_size"], prefetch=12, no_pagemem=True):
 
-    """costruisce i dataloaders di train, validazione e test a partire dai rispettivi dataset."""
+    """costruisce i dataloaders di train, validazione e test a partire dai rispettivi dataset.
+
+    Args:
+        train_data (torch.utils.data.Dataset): data set di training
+        val_data (torch.utils.data.Dataset): data set di validazione
+        test_data (torch.utils.data.Dataset): data set di test
+        batch (int, optional): dimenssione del batch. Defaults to config["batch_size"].
+        prefetch (int, optional): n. di batch precaricati in ogni sottoprocesso. Defaults to 12.
+        pagemem (bool, optional): uso della memoria non paginata per i tensori. Defaults to True.
     
-    # Su Windows + Jupyter impostiamo num_workers=0 e togliamo prefetch_factor
+    Returns:
+        dataloaders (tuple[torch.utils.data.Dataloader, torch.utils.data.Dataloader, torch.utils.data.Dataloader]): una tupla contenente i tre dataloader
+    """
+    # Creiamo i data loaders che saranno gli iteraboili che generano i batch di
+    # addestramento e/o test
     train_dataloader = DataLoader(train_data,
-                                batch_size=batch,           
-                                shuffle=True,               
-                                num_workers=0,              # <--- Modificato da 2 a 0
-                                pin_memory=no_pagemem)      
-                                
+                                batch_size=batch,           # Imposta la dimensione del batch
+                                shuffle=True,               # Shuffling dei batch tra un'epoca e l'altra
+                                num_workers=2,              # Numero dei sottoprocessi di caricamento dei dati
+                                prefetch_factor=prefetch,   # Batch precaricati da ogni sottoprocesso
+                                pin_memory=no_pagemem)      # Usa la memoria non paginata per muovere i tensori
+                                                            # da CPU a GPU
     val_dataloader = DataLoader(val_data,
                                 batch_size=batch,
                                 shuffle=True,
-                                num_workers=0,              # <--- Modificato da 2 a 0
+                                num_workers=2,
+                                prefetch_factor=prefetch,
                                 pin_memory=no_pagemem)
 
     test_dataloader = DataLoader(test_data,
                                 batch_size=batch,
                                 shuffle=True,
-                                num_workers=0,              # <--- Modificato da 2 a 0
+                                num_workers=2,
+                                prefetch_factor=prefetch,
                                 pin_memory=no_pagemem)
 
-    # Semplice investigazione della shape dei tensori
+    # semplice investigazione della shape dei tensori: usiamo il primo
+    # batch del test dataloader come esempio
     for X, y in test_dataloader:
         print(f"Shape e tipo dei campioni: {X.shape}, {X.dtype}")
         print(f"Shape e tipo delle etichette: {y.shape} {y.dtype}")
